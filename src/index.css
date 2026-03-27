@@ -38,7 +38,7 @@ body {
 
 body {
   margin: 0;
-  min-width: 420px;
+  min-width: 375px;
   background: var(--bg);
   color: var(--text);
 }
