@@ -1,7 +1,10 @@
 export const Footer = () => {
     return (
         <footer>
-            <h5>Footer</h5>
+            <div>
+                <h5>VIN Decoder</h5>
+                <p>© 2026 VIN Decoder. All rights reserved.</p>
+            </div>
         </footer>
     )
 }

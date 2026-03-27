@@ -4,17 +4,17 @@ import {Variable} from "../pages/Variable.tsx";
 
 export const routes = [
     {
-        title: 'Home',
+        title: 'VIN Decoder | Home',
         path: '',
         element: <Home/>
     },
     {
-        title: 'Variables',
+        title: 'VIN Decoder | Variables Guide',
         path: '/variables',
         element: <Variables/>
     },
     {
-        title: 'Variable',
+        title: 'Variable Details',
         path: '/variables/:variableId',
         element: <Variable/>
     }

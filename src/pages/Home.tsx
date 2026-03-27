@@ -34,48 +34,64 @@ export const Home = () => {
         setErrorValue(null);
         dispatch(fetchVinData(inputValue.toUpperCase()));
     }
+    
 
     return (
-        <>
-            <h1>Home</h1>
+        <section className="page page--home" aria-labelledby="home-title">
+            <h1 id="home-title">VIN Decoder</h1>
 
             <form className={"search-form"} onSubmit={handleSubmit}>
-                <label htmlFor="vin">Write your VIN code here.</label>
-                <input value={inputValue}
-                       type="text"
-                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                           setInputValue(e.target.value);
-                           if (errorValue) setErrorValue(null);
-                       }}
-                       placeholder="Enter VIN code"
-                       name="vin"
-                       id="vin"
-                />
-                <button type={'submit'}>Decode</button>
+                <label className="field-label" htmlFor="vin">Write your VIN code here.</label>
 
-                {errorValue && <p style={{color: "red"}}>{errorValue}</p>}
-                {error && <p style={{color: "red"}}>{error}</p>}
+                <div className="form-row">
+                    <input value={inputValue}
+                           className="text-input"
+                           type="text"
+                           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                               setInputValue(e.target.value);
+                               if (errorValue) setErrorValue(null);
+                           }}
+                           placeholder="Enter VIN code"
+                           name="vin"
+                           id="vin"
+                           autoComplete="off"
+                           inputMode="text"
+                    />
+                    <button className="btn btn--primary" type={'submit'}>Decode</button>
+                </div>
 
-                <div className={"search-history"}>
-                    <h6>Search history</h6>
-                    {
-                        lastVins.length > 0 ? lastVins.map(((vin) => (
-                                <button key={vin} type={'button'}
+                {errorValue && <p className="form-error" role="alert">{errorValue}</p>}
+                {error && <p className="form-error" role="alert">{error}</p>}
+
+                <aside className="search-history" aria-label="Search history">
+                    <h2 className="section-title">Search history</h2>
+                    {lastVins.length > 0 ? (
+                        <ul className="tag-list">
+                            {lastVins.map((vin) => (
+                                <li key={vin} className="tag-list__item">
+                                    <button
+                                        className="tag"
+                                        type="button"
                                         onClick={() => {
                                             setInputValue(vin);
                                             dispatch(fetchVinData(vin))
-                                        }}>
-                                    {vin}
-                                </button>
-                        ))) : <p>No any VIN code entered.</p>
-                    }
-                </div>
+                                        }}
+                                    >
+                                        {vin}
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p className="muted">No VINs yet.</p>
+                    )}
+                </aside>
             </form>
 
             {loading && <p>Loading...</p>}
 
             {filteredVin && (
-                <dl className="results-list">
+                <dl className="results-list" aria-label="VIN decode results">
                     {filteredVin.map((result) => (
                         <div key={result.VariableId} className="result-item">
                             <dt>
@@ -89,6 +105,6 @@ export const Home = () => {
                 </dl>
             )}
 
-        </>
+        </section>
     )
 }

@@ -1,0 +1,36 @@
+.variables-grid {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.variables-grid__item {
+  margin: 0;
+}
+
+.variable-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  padding: 14px 14px 12px;
+  height: 100%;
+}
+
+.variable-card__title {
+  margin: 0 0 8px;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.variable-card a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.variable-card a:hover {
+  text-decoration: underline;
+}

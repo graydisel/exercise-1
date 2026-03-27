@@ -4,6 +4,7 @@ import {variablesSelector} from "../redux/variables/variablesSelectors.ts";
 import {fetchVariables} from "../redux/variables/variablesSlice.ts";
 import {useEffect} from "react";
 import {Link} from "react-router-dom";
+import "../assets/css/Variables.css";
 
 export const Variables = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -16,21 +17,25 @@ export const Variables = () => {
     }, [dispatch, allVariables]);
 
     return (
-        <main>
-            <h1>Vehicle Variables Guide</h1>
-            {error && <p style={{ color: "red" }}>{error}</p>}
+        <section className="page page--variables" aria-labelledby="variables-title">
+            <h1 id="variables-title">Vehicle Variables Guide</h1>
+            {error && <p className="form-error" role="alert">{error}</p>}
             {loading && <p>Loading directory...</p>}
 
-            <div className="variables-grid">
+            <ul className="variables-grid" aria-label="Variables list">
                 {allVariables?.map(variable => (
-                    <div key={variable.ID} className="variable-card">
-                        <Link to={`/variables/${variable.ID}`}>
-                            <strong>{variable.Name}</strong>
-                        </Link>
-                        <p>Group: {variable.GroupName}</p>
-                    </div>
+                    <li key={variable.ID} className="variables-grid__item">
+                        <article className="variable-card">
+                            <h2 className="variable-card__title">
+                                <Link to={`/variables/${variable.ID}`}>
+                                    {variable.Name}
+                                </Link>
+                            </h2>
+                            <p className="muted">Group: {variable.GroupName}</p>
+                        </article>
+                    </li>
                 ))}
-            </div>
-        </main>
+            </ul>
+        </section>
     )
 }

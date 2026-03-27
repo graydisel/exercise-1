@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import type {AppDispatch, RootState} from "../redux/store.ts";
 import {useEffect} from "react";
 import {fetchVariables} from "../redux/variables/variablesSlice.ts";
+import "../assets/css/Variable.css";
 
 export const Variable = () => {
     const { variableId } = useParams<{ variableId: string }>();
@@ -26,14 +27,20 @@ export const Variable = () => {
         return (
             <div>
                 <p>Variable not found or list not loaded.</p>
-                <Link to="/variables">Back to list</Link>
+                <ul className="main-nav__list">
+                    <li><Link className="main-nav__link" to="/">← Back to search</Link></li>
+                    <li><Link className="main-nav__link" to="/variables">← Variables list</Link></li>
+                </ul>
             </div>
         );
     }
 
     return (
         <article>
-            <Link to="/variables">← Back to list</Link>
+            <ul className="main-nav__list">
+                <li><Link className="main-nav__link" to="/">← Back to search</Link></li>
+                <li><Link className="main-nav__link" to="/variables">← Variables list</Link></li>
+            </ul>
             <h1>{variable.Name}</h1>
             <p><strong>Group:</strong> {variable.GroupName}</p>
             <div dangerouslySetInnerHTML={{ __html: variable.Description }} />
