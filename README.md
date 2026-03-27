@@ -1,6 +1,6 @@
 # VIN Decoder Tool
 
-A modern, responsive React application that decodes Vehicle Identification Numbers (VIN) using the official NHTSA API. Built with a focus on performance, semantic HTML, and clean architecture.
+A modern, responsive React application that decodes Vehicle Identification Numbers (VIN) using the official NHTSA API.
 
 ## Key Features
 
