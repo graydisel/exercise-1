@@ -43,12 +43,12 @@ The UI is handcrafted to be fully responsive, supporting resolutions from **420p
 
 2. **Install dependencies:**
 
-    ```bash
-  npm install
+    ```bash 
+   npm install
 
 3. **Run the app:**
-    ```bash
-  npm run dev
+    ```bash 
+   npm run dev
 
 ## License
 
